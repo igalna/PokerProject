@@ -14,7 +14,7 @@ class ScalaPlayer(output: PrintWriter, input: BufferedReader) extends Player {
         
         var line: String = ""
         
-        while ({ line = input.readLine() ; line != null} )
+        while ({ var line = input.readLine() ; line != null} )
           println(line)
           
           var word: String = line.split(" ")(0)
