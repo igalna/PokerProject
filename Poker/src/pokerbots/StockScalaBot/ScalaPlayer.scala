@@ -4,24 +4,25 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-class ScalaPlayer(output: PrintWriter, input: BufferedReader) {
+import pokerbots.Interfaces.Player
+
+class ScalaPlayer(output: PrintWriter, input: BufferedReader) extends Player {
   
     def run() = {
     
       try {
-        do {
-          var inputString: String = input.readLine()
-          println(inputString)
+        
+        var line: String = ""
+        
+        while ({ line = input.readLine() ; line != null} )
+          println(line)
           
-          var word: String = inputString.split(" ")(0)
+          var word: String = line.split(" ")(0)
           
           word match {
             case "GETACTION" => output.println("CHECK")
             case "REQUESTKEYVALUES" => output.println("FINISH")
           }
-          
-          
-        } while ((input.readLine()) != null)
       } catch {
         case e: IOException => println("IOException: " + e.getMessage)
       }

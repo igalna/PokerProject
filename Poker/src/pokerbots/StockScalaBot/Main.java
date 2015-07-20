@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import pokerbots.Interfaces.Player;
+
 public class Main {
 	
 	private static final String USAGE = "Usage: pokerbot [-h HOST] PORT";
@@ -63,7 +65,7 @@ public class Main {
 			BufferedReader inStream = new BufferedReader(new InputStreamReader(
 					socket.getInputStream()));
 			
-			ScalaPlayer player = new ScalaPlayer(outStream, inStream);
+			Player player = new ScalaPlayer(outStream, inStream);
 			player.run();
 			
 			socket.close();
